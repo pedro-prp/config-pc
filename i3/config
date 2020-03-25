@@ -41,9 +41,14 @@ bindcode 232 exec --no-startup-id xbacklight -dec 10
 bindcode 233 exec --no-startup-id xbacklight -inc 10
 
 # Print
-bindsym Shift+Print exec ~/.config/i3/bash/print.sh s
-bindsym Ctrl+Print exec ~/.config/i3/bash/print.sh u
-bindsym Print exec ~/.config/i3/bash/print.sh t
+bindsym Print exec --release scrot ~/Imagens/shot/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
+
+bindsym Shift+Print --release exec scrot -s ~/Imagens/shot/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
+
+bindsym $mod+Print --release exec scrot /tmp/shot.png -e 'xclip -selection c -t image/png -i /tmp/shot.png'
+
+bindsym $mod+Shift+Print --release exec scrot -s /tmp/shot.png -e 'xclip -selection c -t image/png -i /tmp/shot.png'
+
 
 # Lock
 bindsym $mod+Shift+BackSpace exec ~/.config/i3/bash/lock.sh
