@@ -56,6 +56,7 @@ bindsym $mod+Shift+BackSpace exec ~/.config/i3/bash/lock.sh
 bindsym $mod+Return exec terminator
 bindsym $mod+b exec google-chrome-stable
 bindsym $mod+c exec code
+bindsym $mod+p exec Popcorn-Time
 
 # gaps
 gaps inner 10
@@ -67,21 +68,20 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id exec nm-applet
 exec --no-startup-id exec telegram-desktop
 exec --no-startup-id "sh -c 'sleep 3'; exec brave-browser"
-exec --no-startup-id exec google-chrome-stable github.com/pedro-prp
-exec --no-startup-id i3-msg workspace $ws2
-exec --no-startup-id i3-msg layout tabbed
-exec --no-startup-id exec code
-exec --no-startup-id "sh -c 'sleep 3'; exec terminator"
+exec --no-startup-id exec nemo
+exec --no-startup-id exec google-chrome-stable github.com/pedro-prp udemy.com
+exec --no-startup-id i3-msg 'workspace $ws2; exec terminator'
 
 # design
 default_border pixel 1
 
 # specific workspaces
 assign [class="TelegramDesktop"] $ws9
-for_window [class="Spotify"] move to workspace $ws7
+for_window [class="Spotify"] move to workspace $ws8
 for_window [class="Brave"] move to workspace $ws9
 for_window [class="Google-chrome"] move to workspace $ws1
 for_window [class="Code"] move to workspace $ws2
+for_window [class="Nemo"] move to workspace $ws8
 
 # kill focused window
 bindsym $mod+BackSpace kill
@@ -225,7 +225,7 @@ bindsym $mod+r mode "resize"
 bar {
 	status_command ~/.local/bin/bumblebee-status \
 		-m \
-			memory battery \
+			cpu memory battery \
 			brightness \
 			pasink pasource \
 			date time \
