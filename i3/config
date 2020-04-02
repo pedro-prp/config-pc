@@ -41,14 +41,13 @@ bindcode 232 exec --no-startup-id xbacklight -dec 10
 bindcode 233 exec --no-startup-id xbacklight -inc 10
 
 # Print
-bindsym Print exec --release scrot ~/Imagens/shot/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
+bindsym Print exec scrot ~/Imagens/shot/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
 
 bindsym Shift+Print --release exec scrot -s ~/Imagens/shot/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
 
-bindsym $mod+Print --release exec scrot /tmp/shot.png -e 'xclip -selection c -t image/png -i /tmp/shot.png'
+bindsym $mod+Print exec scrot /tmp/shot.png -e 'xclip -selection c -t image/png -i /tmp/shot.png'
 
 bindsym $mod+Shift+Print --release exec scrot -s /tmp/shot.png -e 'xclip -selection c -t image/png -i /tmp/shot.png'
-
 
 # Lock
 bindsym $mod+Shift+BackSpace exec ~/.config/i3/bash/lock.sh
@@ -67,12 +66,22 @@ smart_gaps on
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id exec nm-applet
 exec --no-startup-id exec telegram-desktop
+exec --no-startup-id "sh -c 'sleep 1; exec brave-browser'"
+exec --no-startup-id exec google-chrome-stable github.com/pedro-prp
+exec --no-startup-id i3-msg workspace $ws2
+exec --no-startup-id i3-msg layout tabbed
+exec --no-startup-id exec code
+exec --no-startup-id "sh -c 'sleep 1; exec terminator'"
 
 # design
 default_border pixel 1
 
 # specific workspaces
 assign [class="TelegramDesktop"] $ws9
+for_window [class="Spotify"] move to workspace $ws7
+for_window [class="Brave"] move to workspace $ws9
+for_window [class="Google-chrome"] move to workspace $ws1
+for_window [class="Code"] move to workspace $ws2
 
 # kill focused window
 bindsym $mod+BackSpace kill
