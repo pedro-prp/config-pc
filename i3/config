@@ -66,12 +66,12 @@ smart_gaps on
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id exec nm-applet
 exec --no-startup-id exec telegram-desktop
-exec --no-startup-id "sh -c 'sleep 1; exec brave-browser'"
+exec --no-startup-id "sh -c 'sleep 3'; exec brave-browser"
 exec --no-startup-id exec google-chrome-stable github.com/pedro-prp
 exec --no-startup-id i3-msg workspace $ws2
 exec --no-startup-id i3-msg layout tabbed
 exec --no-startup-id exec code
-exec --no-startup-id "sh -c 'sleep 1; exec terminator'"
+exec --no-startup-id "sh -c 'sleep 3'; exec terminator"
 
 # design
 default_border pixel 1
