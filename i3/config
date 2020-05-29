@@ -41,47 +41,40 @@ bindcode 232 exec --no-startup-id xbacklight -dec 10
 bindcode 233 exec --no-startup-id xbacklight -inc 10
 
 # Print
-bindsym Print exec scrot ~/Imagens/shot/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
+bindsym Print exec scrot ~/Pictures/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
 
-bindsym Shift+Print --release exec scrot -s ~/Imagens/shot/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
+bindsym Shift+Print --release exec scrot -s ~/Pictures/shot_%s_%H%M_%d.%m.%Y_$wx$h.png
 
-bindsym $mod+Print exec scrot /tmp/shot.png -e 'xclip -selection c -t image/png -i /tmp/shot.png'
+bindsym $mod+Print exec scrot /tmp/shot.png -e 'xclip -selection c -t image/png -i $f'
 
-bindsym $mod+Shift+Print --release exec scrot -s /tmp/shot.png -e 'xclip -selection c -t image/png -i /tmp/shot.png'
+bindsym $mod+Shift+Print --release exec scrot -s /tmp/shot.png -e 'xclip -selection c -t image/png -i $f'
 
 # Lock
 bindsym $mod+Shift+BackSpace exec ~/.config/i3/bash/lock.sh
 
 # start apps
 bindsym $mod+Return exec terminator
-bindsym $mod+b exec google-chrome-stable
-bindsym $mod+c exec code
-bindsym $mod+p exec Popcorn-Time
+bindsym $mod+b exec chromium
 
 # gaps
 gaps inner 10
 gaps outer 0
 smart_gaps on
 
+#change monitors
+bindsym $mod+m move workspace to output left
+
 # Autostart
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id exec nm-applet
 exec --no-startup-id exec telegram-desktop
-exec --no-startup-id "sh -c 'sleep 3'; exec brave-browser"
-exec --no-startup-id exec nemo
-exec --no-startup-id exec google-chrome-stable github.com/pedro-prp udemy.com
-exec --no-startup-id i3-msg 'workspace $ws2; exec terminator'
+#exec --no-startup-id exec picom --config ~/.config/i3/picom/picom.conf
 
 # design
 default_border pixel 1
 
 # specific workspaces
 assign [class="TelegramDesktop"] $ws9
-for_window [class="Spotify"] move to workspace $ws8
-for_window [class="Brave"] move to workspace $ws9
-for_window [class="Google-chrome"] move to workspace $ws1
-for_window [class="Code"] move to workspace $ws2
-for_window [class="Nemo"] move to workspace $ws8
 
 # kill focused window
 bindsym $mod+BackSpace kill
