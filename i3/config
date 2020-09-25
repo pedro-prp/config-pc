@@ -65,6 +65,7 @@ smart_gaps on
 bindsym $mod+m move workspace to output left
 
 # Autostart
+exec --no-startup-id exec xrandr --auto --output VGA1 --left-of LVDS1
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id exec nm-applet
 exec --no-startup-id exec telegram-desktop
